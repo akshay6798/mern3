@@ -49,11 +49,11 @@ app.use((error, req, res, next) => {
 
 mongoose
   .connect(
-    'mongodb+srv://chauhanakshay6798:87654321@cluster0.vmxrjyd.mongodb.net/mern?retryWrites=true&w=majority&appName=Cluster0'
+    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.vmxrjyd.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority&appName=Cluster0`
     //`mongodb+srv://academind:ORlnOPLKvIH9M9hP@cluster0-ntrwp.mongodb.net/mern?retryWrites=true&w=majority`
   )
   .then(() => {
-    app.listen(5000);
+    app.listen(process.env.PORT || 5000);
   })
   .catch(err => {
     console.log(err);
